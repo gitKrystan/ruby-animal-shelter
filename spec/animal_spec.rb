@@ -37,4 +37,15 @@ describe(Animal) do
       expect(Animal.sort_by('date_of_admittance')).to(eq([test_dog, test_cat]))
     end
   end
+
+  describe('.filter_by') do
+    it('filters the animals by a specified column') do
+      test_dog = create_second_test_animal()
+      test_dog.save()
+      test_cat = create_test_animal()
+      test_cat.save()
+      expect(Animal.filter_by('type', 'dog')).to(eq([test_dog]))
+      expect(Animal.filter_by('breed', 'Maine Coon')).to(eq([test_cat]))
+    end
+  end
 end

@@ -55,4 +55,9 @@ class Animal
     results = DB.exec("SELECT * FROM animals ORDER BY #{column};")
     Animal.map_results_to_objects(results)
   end
+
+  def self.filter_by(column, filter)
+    results = DB.exec("SELECT * FROM animals WHERE #{column} = '#{filter}';")
+    Animal.map_results_to_objects(results)
+  end
 end
