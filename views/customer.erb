@@ -1,0 +1,12 @@
+<h1> <%= @customer.first_name() %> <%= @customer.last_name() %> </h1>
+
+<dl class="dl-horizontal">
+  <dt>Phone</dt>
+  <dd> <%= @customer.phone() %> </dd>
+
+  <dt>Preferred Animal</dt>
+  <dd> <%= @customer.animal_type_preference() %> </dd>
+
+  <dt>Preferred Breed</dt>
+  <dd> <%= @customer.breed_preference() %> </dd>
+</dl>

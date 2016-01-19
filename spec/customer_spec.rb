@@ -63,4 +63,12 @@ describe(Customer) do
       expect(test_customer.animals()).to(eq([test_animal]))
     end
   end
+
+  describe('.find') do
+    it('finds a customer by their id number') do
+      test_customer = create_test_customer()
+      test_customer.save()
+      expect(Customer.find(test_customer.id())).to(eq(test_customer))
+    end
+  end
 end

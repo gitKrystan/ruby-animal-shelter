@@ -66,4 +66,12 @@ class Customer
     results = DB.exec("SELECT * FROM animals WHERE customer_id = #{id};")
     Animal.map_results_to_objects(results)
   end
+
+  def self.find(identification)
+    Customer.all().each() do |customer|
+      if customer.id() == identification
+        return customer
+      end
+    end
+  end
 end

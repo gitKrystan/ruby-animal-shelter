@@ -4,7 +4,7 @@
 <ul>
   <% @customers.each() do |customer| %>
     <li>
-      <a href="/customer/<%= customer.id() %>">
+      <a href="/customers/<%= customer.id() %>">
         <%= customer.first_name() %>
         <%= customer.last_name() %>
       </a>

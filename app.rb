@@ -77,3 +77,9 @@ post('/customers/new') do
   new_customer.save()
   redirect('/customers')
 end
+
+get('/customers/:id') do
+  @id = params[:id].to_i()
+  @customer = Customer.find(@id)
+  erb(:customer)
+end

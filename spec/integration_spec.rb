@@ -44,8 +44,17 @@ describe('adding a customer', {:type => :feature} ) do
     fill_in('breed', :with => 'Maine Coon')
     click_button('Add')
     expect(page).to(have_content('Bob'))
+  end
+end
 
-
-
+describe('viewing a customer', {:type => :feature}) do
+  it("allows an employee to view a customer's details") do
+    create_test_customer.save()
+    visit('/')
+    click_link('An Employee')
+    click_link('View Customers')
+    click_link('Alex Smith')
+    expect(page).to(have_content('Alex Smith'))
+    expect(page).to(have_content('Maine Coon'))
   end
 end
