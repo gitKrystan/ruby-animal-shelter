@@ -1,6 +1,8 @@
 class Animal
   attr_reader(:id, :name, :sex, :date_of_admittance, :type, :breed, :customer_id)
 
+  @@accepted_animals = ['cat', 'dog', 'rabbit', 'turtle']
+
   def initialize(arguments)
     @id = arguments[:id]
     @name = arguments[:name]
@@ -9,6 +11,10 @@ class Animal
     @type = arguments[:type]
     @breed = arguments[:breed]
     @customer_id = arguments[:customer_id]
+  end
+
+  def self.accepted_animals
+    @@accepted_animals
   end
 
   def self.all

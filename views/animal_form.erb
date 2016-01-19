@@ -1,0 +1,49 @@
+<h1>Add a New Animal</h1>
+
+<form class="form-horizontal" action="/animals" method="post">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="name">Name</label>
+    <div class="col-sm-10">
+      <input type="text" name="name" class="form-control" placeholder="Name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="sex">Sex</label>
+    <div class="col-sm-10">
+      <label class="radio-inline">
+        <input type="radio" name="sex" value="m">
+        M
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="sex" value="f">
+        F
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="date_of_admittance">Date of Admittance</label>
+    <div class="col-sm-10">
+      <input type="date" name="date_of_admittance" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="type">Type of Animal</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="type">
+        <% @accepted_animals.each() do |animal| %>
+          <option> <%= animal %> </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="breed">Breed</label>
+    <div class="col-sm-10">
+      <input type="text" name="breed" class="form-control" placeholder="Breed">
+    </div>
+  </div>
+</form>
