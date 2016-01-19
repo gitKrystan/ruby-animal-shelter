@@ -23,6 +23,16 @@ def create_test_customer
     :breed_preference => "Maine Coon"})
 end
 
+def create_second_test_customer
+  Customer.new({
+    :id => nil,
+    :first_name => "Mary",
+    :last_name => "Jane",
+    :phone => "444-444-4444",
+    :animal_type_preference => "dog",
+    :breed_preference => "Beagle"})
+end
+
 def create_test_animal
   Animal.new({
     :id => nil,

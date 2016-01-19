@@ -25,4 +25,24 @@ describe(Customer) do
       expect(Customer.all).to eq([test_customer])
     end
   end
+
+  describe('.sort_by') do
+    it('sorts the customer by a specified column') do
+      test_customer2 = create_second_test_customer()
+      test_customer2.save()
+      test_customer = create_test_customer()
+      test_customer.save()
+      expect(Customer.sort_by('last_name')).to(eq([test_customer2, test_customer]))
+    end
+  end
+
+  describe('.filter_by') do
+    it('filters the animals by a specified column') do
+      test_customer2 = create_second_test_customer()
+      test_customer2.save()
+      test_customer = create_test_customer()
+      test_customer.save()
+      expect(Customer.filter_by('breed_preference', 'Maine Coon')).to(eq([test_customer]))
+    end
+  end
 end

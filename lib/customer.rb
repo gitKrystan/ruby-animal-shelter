@@ -42,6 +42,16 @@ class Customer
       '#{@breed_preference}')")
   end
 
+  def self.sort_by(column)
+    results = DB.exec("SELECT * FROM customers ORDER BY #{column};")
+    Customer.map_results_to_objects(results)
+  end
+
+  def self.filter_by(column, filter)
+    results = DB.exec("SELECT * FROM customers WHERE #{column} = '#{filter}';")
+    Customer.map_results_to_objects(results)
+  end
+
   def ==(another_customer)
     self.first_name() == another_customer.first_name() &&
     self.last_name() == another_customer.last_name() &&
