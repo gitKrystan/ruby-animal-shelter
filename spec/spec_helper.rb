@@ -24,3 +24,15 @@ def create_test_animal
     :customer_id => 1,
     })
 end
+
+def create_second_test_animal
+  Animal.new({
+    :id => nil,
+    :name => "Snoopy",
+    :sex => "F",
+    :date_of_admittance => '2015-11-11',
+    :type => "dog",
+    :breed => "Beagle",
+    :customer_id => 2,
+    })
+end

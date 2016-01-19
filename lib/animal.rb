@@ -13,24 +13,7 @@ class Animal
 
   def self.all
     results = DB.exec("SELECT * FROM animals;")
-    all_animals = []
-    results.each() do |result|
-      id = result.fetch('id').to_i()
-      name = result.fetch('name')
-      sex = result.fetch('sex')
-      type = result.fetch('type')
-      breed = result.fetch('breed')
-      customer_id = result.fetch('customer_id').to_i()
-      all_animals << Animal.new({
-        :id => id,
-        :name => name,
-        :sex => sex,
-        :type => type,
-        :breed => breed,
-        :customer_id => customer_id,
-        })
-    end
-    all_animals
+    Animal.map_results_to_objects(results)
   end
 
   def save
@@ -45,5 +28,31 @@ class Animal
     self.type() == another_animal.type() &&
     self.breed() == another_animal.breed() &&
     self.customer_id() == another_animal.customer_id()
+  end
+
+  def self.map_results_to_objects(results)
+    objects = []
+    results.each() do |result|
+      id = result.fetch('id').to_i()
+      name = result.fetch('name')
+      sex = result.fetch('sex')
+      type = result.fetch('type')
+      breed = result.fetch('breed')
+      customer_id = result.fetch('customer_id').to_i()
+      objects << Animal.new({
+        :id => id,
+        :name => name,
+        :sex => sex,
+        :type => type,
+        :breed => breed,
+        :customer_id => customer_id,
+        })
+    end
+    objects
+  end
+
+  def self.sort_by(column)
+    results = DB.exec("SELECT * FROM animals ORDER BY #{column};")
+    Animal.map_results_to_objects(results)
   end
 end
