@@ -9,4 +9,44 @@ class Customer
     @animal_type_preference = arguments[:animal_type_preference]
     @breed_preference = arguments[:breed_preference]
   end
+
+  def self.all
+    results = DB.exec("SELECT * FROM customers;")
+    Customer.map_results_to_objects(results)
+  end
+
+  def self.map_results_to_objects(results)
+    objects = []
+    results.each do |result|
+      id = result.fetch('id').to_i
+      first_name = result.fetch('first_name')
+      last_name = result.fetch('last_name')
+      phone = result.fetch('phone')
+      animal_type_preference = result.fetch('animal_type_preference')
+      breed_preference = result.fetch('breed_preference')
+      objects << Customer.new({
+        :id => id,
+        :first_name => first_name,
+        :last_name => last_name,
+        :phone => phone,
+        :animal_type_preference => animal_type_preference,
+        :breed_preference => breed_preference})
+    end
+    objects
+  end
+
+  def save
+    DB.exec("INSERT INTO customers (first_name, last_name, phone, \
+      animal_type_preference, breed_preference) VALUES ('#{@first_name}', \
+      '#{@last_name}', '#{@phone}', '#{@animal_type_preference}', \
+      '#{@breed_preference}')")
+  end
+
+  def ==(another_customer)
+    self.first_name() == another_customer.first_name() &&
+    self.last_name() == another_customer.last_name() &&
+    self.phone() == another_customer.phone() &&
+    self.animal_type_preference() == another_customer.animal_type_preference() &&
+    self.breed_preference() == another_customer.breed_preference()
+  end
 end

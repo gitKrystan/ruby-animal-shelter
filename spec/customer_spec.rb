@@ -11,4 +11,18 @@ describe(Customer) do
       expect(test_customer.breed_preference).to eq('Maine Coon')
     end
   end
+
+  describe('.all') do
+    it('returns empty array at first') do
+      expect(Customer.all).to eq([])
+    end
+  end
+
+  describe('#save') do
+    it('saves customer to database') do
+      test_customer = create_test_customer
+      test_customer.save()
+      expect(Customer.all).to eq([test_customer])
+    end
+  end
 end
