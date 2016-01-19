@@ -49,3 +49,31 @@ get('/animals/:id') do
   @animal = Animal.find(@id)
   erb(:animal)
 end
+
+get('/customers') do
+  @customers = Customer.all()
+  erb(:customers)
+end
+
+get('/customers/new') do
+  @accepted_animals = Animal.accepted_animals()
+  erb(:customer_form)
+end
+
+post('/customers/new') do
+  first_name = params[:first_name]
+  last_name = params[:last_name]
+  phone = params[:phone]
+  type = params[:type]
+  breed = params[:breed]
+  new_customer = Customer.new({
+    :id => nil,
+    :first_name => first_name,
+    :last_name => last_name,
+    :phone => phone,
+    :type => type,
+    :breed => breed,
+    })
+  new_customer.save()
+  redirect('/customers')
+end
