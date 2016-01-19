@@ -17,9 +17,10 @@ class Animal
   end
 
   def save
-    DB.exec("INSERT INTO animals (name, sex, date_of_admittance, \
+    result = DB.exec("INSERT INTO animals (name, sex, date_of_admittance, \
       type, breed, customer_id) VALUES ('#{@name}', '#{@sex}', \
-      '#{@date_of_admittance}', '#{@type}', '#{@breed}', #{@customer_id});")
+      '#{@date_of_admittance}', '#{@type}', '#{@breed}', #{@customer_id}) RETURNING id;")
+    @id = result.first.fetch('id').to_i()
   end
 
   def ==(another_animal)

@@ -12,6 +12,14 @@ describe(Customer) do
     end
   end
 
+  describe('#id') do
+    it('sets its ID when you save it') do
+      test_customer = create_test_customer()
+      test_customer.save()
+      expect(test_customer.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe('.all') do
     it('returns empty array at first') do
       expect(Customer.all).to eq([])
@@ -43,6 +51,16 @@ describe(Customer) do
       test_customer = create_test_customer()
       test_customer.save()
       expect(Customer.filter_by('breed_preference', 'Maine Coon')).to(eq([test_customer]))
+    end
+  end
+
+  describe('#animals') do
+    it('returns a list of animals adopted by the customer') do
+      test_customer = create_test_customer()
+      test_customer.save()
+      test_animal = create_test_animal(test_customer.id())
+      test_animal.save()
+      expect(test_customer.animals()).to(eq([test_animal]))
     end
   end
 end

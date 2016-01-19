@@ -33,7 +33,7 @@ def create_second_test_customer
     :breed_preference => "Beagle"})
 end
 
-def create_test_animal
+def create_test_animal(customer_id)
   Animal.new({
     :id => nil,
     :name => "Harry Princess",
@@ -41,11 +41,11 @@ def create_test_animal
     :date_of_admittance => '2016-01-01',
     :type => "cat",
     :breed => "Maine Coon",
-    :customer_id => 1,
+    :customer_id => customer_id,
     })
 end
 
-def create_second_test_animal
+def create_second_test_animal(customer_id)
   Animal.new({
     :id => nil,
     :name => "Snoopy",
@@ -53,6 +53,6 @@ def create_second_test_animal
     :date_of_admittance => '2015-11-11',
     :type => "dog",
     :breed => "Beagle",
-    :customer_id => 2,
+    :customer_id => customer_id,
     })
 end

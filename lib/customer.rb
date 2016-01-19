@@ -36,10 +36,11 @@ class Customer
   end
 
   def save
-    DB.exec("INSERT INTO customers (first_name, last_name, phone, \
+    result = DB.exec("INSERT INTO customers (first_name, last_name, phone, \
       animal_type_preference, breed_preference) VALUES ('#{@first_name}', \
       '#{@last_name}', '#{@phone}', '#{@animal_type_preference}', \
-      '#{@breed_preference}')")
+      '#{@breed_preference}') RETURNING id;")
+      @id = result.first.fetch('id').to_i()
   end
 
   def self.sort_by(column)
@@ -58,5 +59,11 @@ class Customer
     self.phone() == another_customer.phone() &&
     self.animal_type_preference() == another_customer.animal_type_preference() &&
     self.breed_preference() == another_customer.breed_preference()
+  end
+
+  def animals
+    id = @id.to_i
+    results = DB.exec("SELECT * FROM animals WHERE customer_id = #{id};")
+    Animal.map_results_to_objects(results)
   end
 end
