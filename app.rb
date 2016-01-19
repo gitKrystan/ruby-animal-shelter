@@ -71,8 +71,8 @@ post('/customers/new') do
     :first_name => first_name,
     :last_name => last_name,
     :phone => phone,
-    :type => type,
-    :breed => breed,
+    :animal_type_preference => type,
+    :breed_preference => breed,
     })
   new_customer.save()
   redirect('/customers')
