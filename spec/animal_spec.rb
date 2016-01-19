@@ -18,4 +18,12 @@ describe(Animal) do
       expect(Animal.all()).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it('adds an animal to the array of saved animals') do
+      test_animal = create_test_animal()
+      test_animal.save()
+      expect(Animal.all()).to(eq([test_animal]))
+    end
+  end
 end

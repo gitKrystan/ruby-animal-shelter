@@ -32,4 +32,18 @@ class Animal
     end
     all_animals
   end
+
+  def save
+    DB.exec("INSERT INTO animals (name, sex, date_of_admittance, \
+      type, breed, customer_id) VALUES ('#{@name}', '#{@sex}', \
+      '#{@date_of_admittance}', '#{@type}', '#{@breed}', #{@customer_id});")
+  end
+
+  def ==(another_animal)
+    self.name() == another_animal.name() &&
+    self.sex() == another_animal.sex() &&
+    self.type() == another_animal.type() &&
+    self.breed() == another_animal.breed() &&
+    self.customer_id() == another_animal.customer_id()
+  end
 end
