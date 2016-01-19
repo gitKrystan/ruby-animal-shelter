@@ -55,4 +55,12 @@ describe(Animal) do
       expect(Animal.filter_by('breed', 'Maine Coon')).to(eq([test_cat]))
     end
   end
+
+  describe('.find') do
+    it('finds an animal by its id number') do
+      test_animal = create_test_animal(0)
+      test_animal.save()
+      expect(Animal.find(test_animal.id())).to(eq(test_animal))
+    end
+  end
 end

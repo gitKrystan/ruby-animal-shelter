@@ -69,4 +69,12 @@ class Animal
     results = DB.exec("SELECT * FROM animals WHERE #{column} = '#{filter}';")
     Animal.map_results_to_objects(results)
   end
+
+  def self.find(identification)
+    Animal.all().each() do |animal|
+      if animal.id() == identification
+        return animal
+      end
+    end
+  end
 end

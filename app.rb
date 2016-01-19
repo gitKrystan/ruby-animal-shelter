@@ -38,8 +38,14 @@ post('/animals/new') do
     :date_of_admittance => date_of_admittance,
     :type => type,
     :breed => breed,
-    :customer_id => 0
+    :customer_id => 'NULL'
     })
   new_animal.save()
   redirect('/animals')
+end
+
+get('/animals/:id') do
+  @id = params[:id].to_i()
+  @animal = Animal.find(@id)
+  erb(:animal)
 end
