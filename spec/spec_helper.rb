@@ -13,6 +13,16 @@ RSpec.configure do |config|
   end
 end
 
+def create_test_customer
+  Customer.new({
+    :id => nil,
+    :first_name => "Alex",
+    :last_name => "Smith",
+    :phone => "555-555-5555",
+    :animal_type_preference => "cat",
+    :breed_preference => "Maine Coon"})
+end
+
 def create_test_animal
   Animal.new({
     :id => nil,
