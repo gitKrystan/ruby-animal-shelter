@@ -43,6 +43,7 @@ class Animal
       id = result.fetch('id').to_i()
       name = result.fetch('name')
       sex = result.fetch('sex')
+      date_of_admittance = result.fetch('date_of_admittance')
       type = result.fetch('type')
       breed = result.fetch('breed')
       customer_id = result.fetch('customer_id').to_i()
@@ -50,6 +51,7 @@ class Animal
         :id => id,
         :name => name,
         :sex => sex,
+        :date_of_admittance => date_of_admittance,
         :type => type,
         :breed => breed,
         :customer_id => customer_id,
