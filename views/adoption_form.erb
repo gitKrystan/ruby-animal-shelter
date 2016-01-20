@@ -1,0 +1,16 @@
+<h1>Adopt <%= @animal.name() %></h1>
+
+<form class="form-horizontal" action="/animals/<%= @animal.id() %>/adopt" method="post">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="customer_id">Customer Id</label>
+    <div class="col-sm-10">
+      <input type="text" name="customer_id" class="form-control" placeholder="id">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <button type="submit" class="btn btn-default">Complete Adoption</button>
+    </div>
+  </div>
+</form>

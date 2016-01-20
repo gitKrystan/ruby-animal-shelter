@@ -63,4 +63,14 @@ describe(Animal) do
       expect(Animal.find(test_animal.id())).to(eq(test_animal))
     end
   end
+
+  describe('#update') do
+    it('changes a specific characteristic of the animal') do
+      test_animal = create_test_animal(0)
+      test_animal.save()
+      test_animal.update('customer_id', 1)
+      updated_animal = Animal.find(test_animal.id())
+      expect(updated_animal.customer_id()).to(eq(1))
+    end
+  end
 end

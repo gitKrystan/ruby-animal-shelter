@@ -77,4 +77,12 @@ class Animal
       end
     end
   end
+
+  def update(column, new_information)
+    if new_information.is_a?(Fixnum)
+      DB.exec("UPDATE animals SET #{column} = #{new_information} WHERE id = #{@id};")
+    else
+      DB.exec("UPDATE animals SET #{column} = '#{new_information}' WHERE id = #{@id};")
+    end
+  end
 end

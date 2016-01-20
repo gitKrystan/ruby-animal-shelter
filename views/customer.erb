@@ -1,6 +1,9 @@
 <h1> <%= @customer.first_name() %> <%= @customer.last_name() %> </h1>
 
 <dl class="dl-horizontal">
+  <dt>ID</dt>
+  <dd> <%= @customer.id() %> </dd>
+
   <dt>Phone</dt>
   <dd> <%= @customer.phone() %> </dd>
 

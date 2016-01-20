@@ -13,3 +13,8 @@
   <dt>Breed</dt>
   <dd> <%= @animal.breed() %> </dd>
 </dl>
+
+
+<a href="/animals/<%= @id %>/adopt">
+  <button type="submit" class="btn btn-default" value="adopt">Adopt <%= @animal.name() %></button>
+</a>

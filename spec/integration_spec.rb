@@ -58,3 +58,20 @@ describe('viewing a customer', {:type => :feature}) do
     expect(page).to(have_content('Maine Coon'))
   end
 end
+
+# describe('adopt an animal', {:type => :feature}) do
+#   it('allows a customer to adopt an animal') do
+#     test_customer = create_test_customer()
+#     test_customer.save()
+#     create_test_animal(0).save()
+#     visit('/')
+#     click_link('An Employee')
+#     click_link('View Animals')
+#     click_link('Harry Princess')
+#     click_link('Adopt Harry Princess')
+#     fill_in('customer_id', :with => "#{test_customer.id()}")
+#     click_button('Complete Adoption')
+#     expect(page).to(have_content('Harry Princess'))
+#     expect(page).to(have_content('Alex'))
+#   end
+# end

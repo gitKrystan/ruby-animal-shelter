@@ -73,5 +73,6 @@ class Customer
         return customer
       end
     end
+    customer = nil
   end
 end
